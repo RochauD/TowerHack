@@ -33,7 +33,7 @@ private:
 
 	sf::RenderWindow* m_renderWindow;
 	std::unique_ptr<TextureManager> m_textureManager;
-	std::set<Renderable*, zindex_compare> m_renderSet;
+	std::multiset<Renderable*, zindex_compare> m_renderSet;
 };
 
 

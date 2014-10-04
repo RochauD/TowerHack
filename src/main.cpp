@@ -2,6 +2,8 @@
 #include "RenderManager.h"
 #include "StaticSprite.h"
 #include "StandardTexture.h"
+#include "AnimationSprite.h"
+#include "RectTexture.h"
 
 int main()
 {
@@ -10,10 +12,12 @@ int main()
 	RenderManager renderManger("", &window);
 
 	std::string str = "bild1.png";
+	std::string str2 = "bild2.png";
 	StaticSprite<StandardTexture> test(str, 100);
 	StaticSprite<StandardTexture> test2(str, 10);
+	AnimationSprite<RectTexture> test3("info.txt", 1000, true, sf::milliseconds(10000 / 24), false, true);
 	test.setPosition(0, 0);
-	test2.setPosition(10, 20);
+	test2.setPosition(100, 200);
 
 
 	while (window.isOpen())

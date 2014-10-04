@@ -17,6 +17,7 @@ class StaticSprite : public sf::Transformable, public Renderable, public Texture
 {
 public:
 	StaticSprite(const std::string& filename, int zIndex, bool show = true);
+	~StaticSprite();
 	void SetColor(const sf::Color& color);
 	const sf::Color& GetColor() const;
 
@@ -35,7 +36,6 @@ private:
 
 };
 
-
 template <class TextureType>
 StaticSprite<TextureType>::StaticSprite(const std::string& filename, int zIndex, bool show) : Renderable(zIndex)
 {
@@ -46,6 +46,15 @@ StaticSprite<TextureType>::StaticSprite(const std::string& filename, int zIndex,
 	if (this->m_visibilityFlag == true)
 	{
 		s_renderManager->AddSprite(this);
+	}
+}
+
+template <class TextureType>
+StaticSprite<TextureType>::~StaticSprite()
+{
+	if (this->m_visibilityFlag == true)
+	{
+		s_renderManager->RemoveSprite(this);
 	}
 }
 
