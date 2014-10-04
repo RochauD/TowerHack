@@ -32,6 +32,7 @@
     <ClInclude Include="..\src\StandardTexture.h" />
     <ClInclude Include="..\src\StaticSprite.h" />
     <ClInclude Include="..\src\TextureManager.h" />
+    <ClInclude Include="..\src\Tower.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEmitter.h" />
   </ItemGroup>
