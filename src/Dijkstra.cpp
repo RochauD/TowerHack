@@ -32,11 +32,11 @@ void Dijkstra::removeGridNode(size_t xPos, size_t yPos) {
 	this->gridNodes.erase(Position(xPos, yPos));
 }
 
-Dijkstra::Position Dijkstra::getNextMove(Position currPos) {
+Position Dijkstra::getNextMove(Position currPos) {
 	return this->getNextMove(currPos.first, currPos.second);
 }
 
-Dijkstra::Position Dijkstra::getNextMove(size_t xPos, size_t yPos) {
+Position Dijkstra::getNextMove(size_t xPos, size_t yPos) {
 	return this->parent[xPos][yPos];
 }
 

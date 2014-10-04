@@ -7,7 +7,6 @@
 #include "Grid.h"
 
 class Dijkstra {
-	using Position = std::pair<size_t, size_t>;
 	using ValPosition = std::pair<Position, int>;
 
 private:

@@ -3,16 +3,15 @@
 
 #include <vector>
 
-class Grid {
-	using Position = std::pair<size_t, size_t>;
+using Position = std::pair<size_t, size_t>;
 
+class Grid {
 private:
 	size_t width;
 	size_t height;
 	std::vector<std::vector<char>> tiles;
 
 public:
-
 	Grid(size_t width, size_t height);
 
 	void setTile(size_t xPos, size_t yPos, char value);

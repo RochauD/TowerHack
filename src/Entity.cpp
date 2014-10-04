@@ -7,26 +7,26 @@ Entity::Entity(int maxHp, int damage, int range, sf::Time atkSpeed, Position pos
 	this->attackRange = range;
 	this->attackSpeed = atkSpeed;
 	this->position = position;
-	this->isAlive = alive;
+	this->alive = alive;
 	this->level = level;
 }
 
 bool Entity::isAlive() {
-	return this->isAlive;
+	return this->alive;
 }
 
 void Entity::attack(Entity target) {
-	if (this->isAlive)
+	if (this->isAlive())
 	{
 		target.takeDamage(this->getDamage());
 	}
 }
 
 void Entity::takeDamage(int damage) {
-	if (this->isAlive && this->getHp() < damage)
+	if (this->isAlive() && this->getHp() < damage)
 	{
 		this->hp = 0;
-		this->isAlive = false;
+		this->alive = false;
 	}
 }
 
@@ -38,7 +38,7 @@ int Entity::getDamage() {
 	return this->damage * this->level;
 }
 
-Entity::Position Entity::getPosition() {
+Position Entity::getPosition() {
 	return this->position;
 }
 

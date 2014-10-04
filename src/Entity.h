@@ -2,10 +2,10 @@
 #define ENTITY_H
 #include <chrono>
 #include "EntityManager.h"
+#include "Grid.h"
 #include "SFML\System.hpp"
 
 class Entity {
-	using Position = std::pair<size_t, size_t>;
 	friend class EntityManager;
 
 private:
@@ -17,7 +17,7 @@ private:
 	sf::Time attackSpeed;
 	std::chrono::time_point<std::chrono::system_clock> lastAttack;
 	Position position;
-	bool isAlive;
+	bool alive;
 
 	static sf::Clock clock;
 

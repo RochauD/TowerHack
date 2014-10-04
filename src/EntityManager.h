@@ -4,6 +4,8 @@
 #include "Entity.h"
 #include <string>
 
+class Entity;
+
 class EntityManager {
 private:
 	std::set<Entity> allEntities;
