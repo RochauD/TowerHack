@@ -11,7 +11,9 @@ int main()
 
 	std::string str = "bild1.png";
 	StaticSprite<StandardTexture> test(str, 100);
+	StaticSprite<StandardTexture> test2(str, 10);
 	test.setPosition(0, 0);
+	test2.setPosition(10, 20);
 
 
 	while (window.isOpen())
@@ -25,13 +27,15 @@ int main()
 			}
 			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
 			{
-
+				test2.SetZIndex(1000);
 			}
-
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
+			{
+				test2.SetZIndex(10);
+			}
 		}
 
 		window.clear();
-		test.Render(&window);
 		renderManger.Draw();
 		window.display();
 	}

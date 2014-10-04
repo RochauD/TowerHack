@@ -48,6 +48,11 @@ inline Renderable::~Renderable()
 inline void Renderable::SetZIndex(int zIndex)
 {
 	this->m_zIndex = zIndex;
+	if (this->m_visibilityFlag == true)
+	{
+		s_renderManager->RemoveSprite(this);
+		s_renderManager->AddSprite(this);
+	}
 }
 
 inline int Renderable::GetZIndex()
