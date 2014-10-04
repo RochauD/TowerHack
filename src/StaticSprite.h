@@ -20,10 +20,12 @@ public:
 	StaticSprite(const std::string& filename, int zIndex, bool show = true);
 	~StaticSprite();
 	void SetColor(const sf::Color& color);
+	void SetVisibilityFlag(bool flag);
 	const sf::Color& GetColor() const;
 
 	sf::FloatRect GetLocalBounds() const;
 	sf::FloatRect GetGlobalBounds() const;
+	TextureType* GetTexture();
 	void Render(sf::RenderTarget* target);
 	void UpdatePositions();
 	void UpdateTexCoords();
@@ -75,6 +77,12 @@ void StaticSprite<TextureType>::SetColor(const sf::Color& color)
 }
 
 template <class TextureType>
+void StaticSprite<TextureType>::SetVisibilityFlag(bool flag)
+{
+	this->m_visibilityFlag = flag;
+}
+
+template <class TextureType>
 const sf::Color& StaticSprite<TextureType>::GetColor() const
 {
 	return m_vertices[0].color;
@@ -93,6 +101,12 @@ template <class TextureType>
 sf::FloatRect StaticSprite<TextureType>::GetGlobalBounds() const
 {
 	return getTransform().transformRect(GetLocalBounds());
+}
+
+template <class TextureType>
+TextureType* StaticSprite<TextureType>::GetTexture()
+{
+	return &this->m_texture;
 }
 
 template <class TextureType>
