@@ -1,3 +1,4 @@
+#include <vector>
 #include <SFML\Graphics.hpp>
 #include "RenderManager.h"
 #include "StaticSprite.h"
@@ -7,8 +8,10 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1000, 900), "SFML works!");
+	std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+	sf::RenderWindow window(sf::VideoMode(modes[0].width, modes[0].height), "SFML works!", sf::Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
+
 	RenderManager renderManger("", &window);
 
 	std::string str = "bild1.png";
@@ -25,6 +28,10 @@ int main()
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+			{
+				window.close();
+			}
 			if (event.type == sf::Event::Closed)
 			{
 				window.close();

@@ -22,6 +22,9 @@
     <Filter Include="Header Files\SpriteClasses">
       <UniqueIdentifier>{9d3e004b-33d6-49c1-abc3-31a18a2d764e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Particles">
+      <UniqueIdentifier>{0a4ebc25-90e7-4920-89b0-aa49fe0d4d2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BaseTexture.h">
@@ -47,6 +50,12 @@
     </ClInclude>
     <ClInclude Include="..\src\RenderManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEmitter.h">
+      <Filter>Header Files\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Header Files\Particles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

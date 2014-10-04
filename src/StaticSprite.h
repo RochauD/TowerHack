@@ -16,6 +16,7 @@ template<class TextureType>
 class StaticSprite : public sf::Transformable, public Renderable, public TextureType
 {
 public:
+	StaticSprite();
 	StaticSprite(const std::string& filename, int zIndex, bool show = true);
 	~StaticSprite();
 	void SetColor(const sf::Color& color);
@@ -24,10 +25,10 @@ public:
 	sf::FloatRect GetLocalBounds() const;
 	sf::FloatRect GetGlobalBounds() const;
 	void Render(sf::RenderTarget* target);
-	
-protected:
 	void UpdatePositions();
 	void UpdateTexCoords();
+
+protected:
 	void SetTextureRect(const sf::IntRect& rectangle);
 	sf::Vertex m_vertices[4];
 
@@ -35,6 +36,12 @@ protected:
 private:
 
 };
+
+template <class TextureType>
+StaticSprite<TextureType>::StaticSprite()
+{
+
+}
 
 template <class TextureType>
 StaticSprite<TextureType>::StaticSprite(const std::string& filename, int zIndex, bool show) : Renderable(zIndex)
