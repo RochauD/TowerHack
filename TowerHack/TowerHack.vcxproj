@@ -23,6 +23,7 @@
     <ClInclude Include="..\src\BaseTexture.h" />
     <ClInclude Include="..\src\Dijkstra.h" />
     <ClInclude Include="..\src\Entity.h" />
+    <ClInclude Include="..\src\EntityManager.h" />
     <ClInclude Include="..\src\Grid.h" />
     <ClInclude Include="..\src\Minion.h" />
     <ClInclude Include="..\src\RectTexture.h" />
@@ -31,17 +32,24 @@
     <ClInclude Include="..\src\StandardTexture.h" />
     <ClInclude Include="..\src\StaticSprite.h" />
     <ClInclude Include="..\src\TextureManager.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleEmitter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\BaseTexture.cpp" />
     <ClCompile Include="..\src\Dijkstra.cpp" />
+    <ClCompile Include="..\src\Entity.cpp" />
     <ClCompile Include="..\src\Grid.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\Minion.cpp" />
     <ClCompile Include="..\src\RectTexture.cpp" />
     <ClCompile Include="..\src\Renderable.cpp" />
     <ClCompile Include="..\src\RenderManager.cpp" />
     <ClCompile Include="..\src\StandardTexture.cpp" />
     <ClCompile Include="..\src\TextureManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\res\info.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{193C5A60-565F-4A02-8040-92310D609131}</ProjectGuid>
