@@ -13,9 +13,62 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\TextureClasses">
+      <UniqueIdentifier>{a033940f-a4ec-48f6-bb75-08f7c755d98b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextureClasses">
+      <UniqueIdentifier>{5c33c406-9d2e-4201-ae00-415d7b9fcdbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SpriteClasses">
+      <UniqueIdentifier>{9d3e004b-33d6-49c1-abc3-31a18a2d764e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClInclude Include="..\src\BaseTexture.h">
+      <Filter>Header Files\TextureClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RectTexture.h">
+      <Filter>Header Files\TextureClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\StandardTexture.h">
+      <Filter>Header Files\TextureClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\StaticSprite.h">
+      <Filter>Header Files\SpriteClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\AnimationSprite.h">
+      <Filter>Header Files\SpriteClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RenderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\StandardTexture.cpp">
+      <Filter>Source Files\TextureClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BaseTexture.cpp">
+      <Filter>Source Files\TextureClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RectTexture.cpp">
+      <Filter>Source Files\TextureClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TextureManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RenderManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

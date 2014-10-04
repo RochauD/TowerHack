@@ -18,6 +18,25 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\AnimationSprite.h" />
+    <ClInclude Include="..\src\BaseTexture.h" />
+    <ClInclude Include="..\src\RectTexture.h" />
+    <ClInclude Include="..\src\Renderable.h" />
+    <ClInclude Include="..\src\RenderManager.h" />
+    <ClInclude Include="..\src\StandardTexture.h" />
+    <ClInclude Include="..\src\StaticSprite.h" />
+    <ClInclude Include="..\src\TextureManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\BaseTexture.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\RectTexture.cpp" />
+    <ClCompile Include="..\src\Renderable.cpp" />
+    <ClCompile Include="..\src\RenderManager.cpp" />
+    <ClCompile Include="..\src\StandardTexture.cpp" />
+    <ClCompile Include="..\src\TextureManager.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{193C5A60-565F-4A02-8040-92310D609131}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -144,9 +163,6 @@
       <AdditionalDependencies>sfml-graphics.lib;sfml-main.lib;sfml-network.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
