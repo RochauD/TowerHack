@@ -37,6 +37,9 @@
     <ClCompile Include="..\src\StandardTexture.cpp" />
     <ClCompile Include="..\src\TextureManager.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\res\info.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{193C5A60-565F-4A02-8040-92310D609131}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
