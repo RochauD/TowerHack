@@ -29,11 +29,11 @@
     <ClInclude Include="..\src\RectTexture.h" />
     <ClInclude Include="..\src\Renderable.h" />
     <ClInclude Include="..\src\RenderManager.h" />
+    <ClInclude Include="..\src\SidePanel.h" />
     <ClInclude Include="..\src\StandardTexture.h" />
     <ClInclude Include="..\src\StaticSprite.h" />
     <ClInclude Include="..\src\TextureManager.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="ParticleEmitter.h" />
+    <ClInclude Include="SidePanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\BaseTexture.cpp" />
