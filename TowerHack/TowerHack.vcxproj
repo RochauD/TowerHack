@@ -21,6 +21,10 @@
   <ItemGroup>
     <ClInclude Include="..\src\AnimationSprite.h" />
     <ClInclude Include="..\src\BaseTexture.h" />
+    <ClInclude Include="..\src\Dijkstra.h" />
+    <ClInclude Include="..\src\Entity.h" />
+    <ClInclude Include="..\src\Grid.h" />
+    <ClInclude Include="..\src\Minion.h" />
     <ClInclude Include="..\src\RectTexture.h" />
     <ClInclude Include="..\src\Renderable.h" />
     <ClInclude Include="..\src\RenderManager.h" />
@@ -30,6 +34,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\BaseTexture.cpp" />
+    <ClCompile Include="..\src\Dijkstra.cpp" />
+    <ClCompile Include="..\src\Grid.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\RectTexture.cpp" />
     <ClCompile Include="..\src\Renderable.cpp" />
@@ -104,6 +110,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SFML)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
