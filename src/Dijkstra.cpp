@@ -1,21 +1,22 @@
 #include "Dijkstra.h"
+#include "Grid.h"
 
-Dijkstra::Dijkstra(Grid &grid) {
-	this->grid = &grid;
+Dijkstra::Dijkstra(Grid* grid) {
+	this->grid = grid;
 
 	this->gridNodes = std::set<Position>();
-
-	for (size_t i = 0; i < grid.getWidth(); i++)
+	for (size_t i = 0; i < this->grid->getHeight(); i++)
 	{
+	
 		std::vector<size_t> tempSizeVec;
 		std::vector<Position> tempPosVec;
 		std::vector<bool> tempBoolVec;
 
-		for (size_t j = 0; j < grid.getHeight(); j++)
+		for (size_t j = 0; j < this->grid->getWidth(); j++)
 		{
 			if (!this->grid->tileIsBlocked(i, j))
 			{
-				this->gridNodes.insert(Position(i, j));
+				this->gridNodes.insert(Position(i, j));		//i bis 30 ; j bis 50
 			}
 
 			tempBoolVec.push_back(false);
@@ -32,11 +33,11 @@ void Dijkstra::removeGridNode(size_t xPos, size_t yPos) {
 	this->gridNodes.erase(Position(xPos, yPos));
 }
 
-Position Dijkstra::getNextMove(Position currPos) {
+Dijkstra::Position Dijkstra::getNextMove(Position currPos) {
 	return this->getNextMove(currPos.first, currPos.second);
 }
 
-Position Dijkstra::getNextMove(size_t xPos, size_t yPos) {
+Dijkstra::Position Dijkstra::getNextMove(size_t xPos, size_t yPos) {
 	return this->parent[xPos][yPos];
 }
 
