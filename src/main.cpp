@@ -6,6 +6,7 @@
 #include "AnimationSprite.h"
 #include "RectTexture.h"
 #include "Grid.h"
+#include "SidePanel.h"
 
 int main()
 {
@@ -13,8 +14,10 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(modes[0].width, modes[0].height), "SFML works!", sf::Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	RenderManager renderManger("", &window);
+	StaticSprite<StandardTexture> test("bild1.png", 1000000, true);
 
 	Grid grid(std::string("field.txt"), 250, 250);
+	SidePanel sidepanel(1400, 400);
 
 	while (window.isOpen())
 	{
@@ -28,6 +31,16 @@ int main()
 			if (event.type == sf::Event::Closed)
 			{
 				window.close();
+			}
+			if (event.type == sf::Event::MouseMoved)
+			{
+				sf::Vector2i pos = sf::Mouse::getPosition();
+				sidepanel.Update(pos);
+				test.setPosition(pos.x, pos.y);
+			}
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				sidepanel.SetSelector();
 			}
 
 		}

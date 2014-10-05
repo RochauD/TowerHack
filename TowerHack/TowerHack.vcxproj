@@ -45,6 +45,7 @@
     <ClCompile Include="..\src\RectTexture.cpp" />
     <ClCompile Include="..\src\Renderable.cpp" />
     <ClCompile Include="..\src\RenderManager.cpp" />
+    <ClCompile Include="..\src\SidePanel.cpp" />
     <ClCompile Include="..\src\StandardTexture.cpp" />
     <ClCompile Include="..\src\TextureManager.cpp" />
   </ItemGroup>
