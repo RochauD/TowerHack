@@ -1,33 +1,42 @@
 #ifndef ENTITY_H
 #define ENTITY_H
-#include <chrono>
-#include "EntityManager.h"
 #include "Grid.h"
-#include "SFML\System.hpp"
+#include <chrono>
+#include "Renderable.h"
+#include <memory>
+
+using SysClock = std::chrono::duration<std::chrono::system_clock::rep, std::chrono::system_clock::period>;
 
 class Entity {
-	friend class EntityManager;
 
+protected:
+	using Position = std::pair<size_t, size_t>;
+	Entity(std::string filename, int maxHp, int damage, int range, std::chrono::milliseconds atkSpeed, Position position, Position offset, bool alive, int level);
+	Entity();
 private:
+	std::shared_ptr<StaticSprite<StandardTexture>> m_sprite;
 	int maxHp;
 	int hp;
 	int damage;
 	int attackRange;
 	int level;		// other values scale with the level of the entity
-	sf::Time attackSpeed;
-	std::chrono::time_point<std::chrono::system_clock> lastAttack;
+	std::chrono::milliseconds attackSpeed;
+	std::chrono::system_clock::time_point m_timeSinceLastAttack;
 	Position position;
+	Position m_offset;
 	bool alive;
 
 	static sf::Clock clock;
 
-	Entity(int maxHp, int damage, int range, sf::Time atkSpeed, Position position, bool alive, int level);
+
 	
 public:	
 	bool isAlive();
+	void setAlive(bool alive);
 	void attack(Entity target);
 	void takeDamage(int damage);
 	void setPosition(Position pos);
+	virtual void update(SysClock elapsed, std::vector<std::shared_ptr<Entity>>& entitiesInRange);
 
 	int getDamage();
 	int getHp();

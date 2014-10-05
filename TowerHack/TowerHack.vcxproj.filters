@@ -30,6 +30,9 @@
     <ClInclude Include="..\src\RectTexture.h">
       <Filter>Header Files\TextureClasses</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\StandardTexture.h">
+      <Filter>Header Files\TextureClasses</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Renderable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -66,7 +69,7 @@
     <ClInclude Include="..\src\SidePanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\StandardTexture.h">
+    <ClInclude Include="..\src\Tower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -102,9 +105,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Minion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\SidePanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
