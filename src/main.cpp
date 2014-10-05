@@ -1,37 +1,46 @@
+#include <vector>
 #include <SFML\Graphics.hpp>
 #include "RenderManager.h"
 #include "StaticSprite.h"
 #include "StandardTexture.h"
 #include "AnimationSprite.h"
 #include "RectTexture.h"
-
-
+#include "Grid.h"
+#include "SidePanel.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1000, 900), "SFML works!");
+	std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+	sf::RenderWindow window(sf::VideoMode(modes[0].width, modes[0].height), "SFML works!", sf::Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
 	RenderManager renderManger("", &window);
 
-	
-
+	Grid grid(std::string("field.txt"), 250, 250);
+	SidePanel sidepanel(1400, 400);
 
 	while (window.isOpen())
 	{
+		grid.Update();
+
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+			{
+				window.close();
+			}
 			if (event.type == sf::Event::Closed)
 			{
 				window.close();
 			}
-			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
+			if (event.type == sf::Event::MouseMoved)
 			{
-				test2.SetZIndex(1000);
+				sf::Vector2i pos = sf::Mouse::getPosition();
+				sidepanel.Update(pos);
 			}
-			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
-				test2.SetZIndex(10);
+				sidepanel.SetSelector();
 			}
 		}
 
