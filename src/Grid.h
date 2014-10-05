@@ -33,6 +33,7 @@ private:
 	size_t m_offsetY;
 	size_t m_width;
 	size_t m_height;
+	int distance(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2);
 	std::vector<std::vector<char>> m_tiles;
 	std::vector<std::shared_ptr<Entity>> m_entities;
 	std::vector<std::vector<std::unique_ptr<StaticSprite<StandardTexture>>>> m_tileSprites;

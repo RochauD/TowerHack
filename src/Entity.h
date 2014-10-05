@@ -41,6 +41,7 @@ public:
 	int getDamage();
 	int getHp();
 	Position getPosition();
+	int getRange();
 };
 
 #endif

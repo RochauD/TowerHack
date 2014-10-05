@@ -1,9 +1,9 @@
 #include "Grid.h"
 #include <fstream>
+#include <math.h>
 #include "Minion.h"
 #include "Entity.h"
 #include "Dijkstra.h"
-
 #include "Renderable.h"
 
 Grid::Grid(std::string& filename, size_t offsetX, size_t offsetY)
@@ -100,8 +100,6 @@ size_t Grid::getHeight()
 
 bool Grid::tileIsBlocked(size_t xPos, size_t yPos) 
 {
-	//TODO!
-
 	return this->m_tiles[xPos][yPos] != '_';
 }
 
@@ -117,39 +115,70 @@ std::vector<std::pair<size_t, size_t>> Grid::getAccessibleAdjacentTiles(std::pai
 }
 
 std::vector<std::shared_ptr<Entity>> Grid::getEntitiesInRange(std::shared_ptr<Entity> entity) {
-	return std::vector<std::shared_ptr<Entity>>();
+	std::vector<std::shared_ptr<Entity>> retVec;
+
+	if (this->m_entities.size() > 0)
+	{
+		for (size_t i = std::max(0, static_cast<int>(entity->getPosition().first) - entity->getRange()); i < std::min(this->getHeight() - 1, entity->getPosition().first + entity->getRange()); i++)
+		{
+			for (size_t j = std::max(0, static_cast<int>(entity->getPosition().second) - entity->getRange()); j < std::min(this->getWidth() - 1, entity->getPosition().second + entity->getRange()); j++)
+			{
+				for each (const std::shared_ptr<Entity>& entity2 in this->m_entities)
+				{
+					if (entity->getPosition() != entity2->getPosition() && entity2->getPosition() == Position(i,j))
+					{
+						retVec.push_back(entity2);
+					}
+				}
+			}
+		}
+	}
+
+	return retVec;
 }
 
 void Grid::Update()
 {
+	static bool x = true;
 	std::vector<std::vector<std::shared_ptr<Entity>>::iterator> toRemove;
-	auto elapsed = std::chrono::system_clock::now() - this->m_lastUpdateTimePoint;
+	auto elapsed = std::chrono::steady_clock::now() - this->m_lastUpdateTimePoint;
 
-	
+	auto elapsed2 = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - this->m_lastSpawnTimePoint);
+
+	if (elapsed2 > std::chrono::milliseconds(500) && this->m_entities.size() < 25)
+	{
 		this->m_lastSpawnTimePoint = std::chrono::system_clock::now();
 
-		if (/*std::chrono::system_clock::now() - this->m_lastSpawnTimePoint > std::chrono::seconds(2) &&*/ this->m_entities.size() < 100)
-		{
-			this->m_lastSpawnTimePoint = std::chrono::system_clock::now();
-			std::shared_ptr<Entity> temp = std::shared_ptr<Minion>(new Minion(std::string("Entity1.png"), 100, 10, 2, std::chrono::seconds(2), Position(9, 0), Position(this->m_offsetX, this->m_offsetY), true, 1));
-				
-			this->m_entities.push_back(temp);
-		}
+		std::shared_ptr<Entity> temp;
 
-		for (auto iter = this->m_entities.begin(); iter != this->m_entities.end(); ++iter)
+		if (x)
 		{
-			if ((*iter)->isAlive()) {
-				(*iter)->update(elapsed, this->getEntitiesInRange(*iter));
-			}
-			else {
-				toRemove.push_back(iter);
-			}
+			x = !x;
+			temp = std::shared_ptr<Minion>(new Minion(std::string("Entity1.png"), 100, 10, 2, std::chrono::seconds(2), Position(0, 0), Position(this->m_offsetX, this->m_offsetY), true, 1, std::chrono::milliseconds(90)));
 		}
-
-		for (auto iter = toRemove.begin(); iter != toRemove.end(); ++iter)
-		{
-			this->m_entities.erase(*iter);
+		else {
+			x = !x;
+			temp = std::shared_ptr<Minion>(new Minion(std::string("Entity2.png"), 150, 7, 2, std::chrono::seconds(1), Position(0, 0), Position(this->m_offsetX, this->m_offsetY), true, 1, std::chrono::milliseconds(200)));
 		}
+		
 
-		toRemove.clear();
+		this->m_entities.push_back(temp);
+	}
+
+	for (auto iter = this->m_entities.begin(); iter != this->m_entities.end(); ++iter)
+	{
+		if ((*iter)->isAlive() && (*iter)->getPosition() != Position(this->m_height - 1, this->m_width - 1)) {
+			(*iter)->update(elapsed, this->getEntitiesInRange(*iter));
+		}
+		else {
+			toRemove.push_back(iter);
+		}
+	}
+
+	for (auto iter = toRemove.begin(); iter != toRemove.end(); ++iter)
+	{
+		this->m_entities.erase(*iter);
+	}
+
+	toRemove.clear();
 }

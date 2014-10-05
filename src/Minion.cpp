@@ -7,8 +7,9 @@ Minion::Minion()
 
 }
 
-Minion::Minion(std::string filename, int maxHp, int damage, int range, std::chrono::milliseconds atkSpeed, Position position, Position offset, bool alive, int level) : Entity(filename, maxHp, damage, range, atkSpeed, position, offset, alive, level) {
+Minion::Minion(std::string filename, int maxHp, int damage, int range, std::chrono::milliseconds atkSpeed, Position position, Position offset, bool alive, int level, std::chrono::milliseconds movementSpeed) : Entity(filename, maxHp, damage, range, atkSpeed, position, offset, alive, level) {
 	this->setAlive(alive);
+	this->movementSpeed = movementSpeed;
 }
 
 void Minion::setPathAlgorithm(Dijkstra* pathAlgorithm) {
@@ -30,7 +31,7 @@ void Minion::setAlive(bool alive) {
 
 	if (this->isAlive() != alive && alive)
 	{
-		this->m_lastMoveTimePoint = std::chrono::system_clock::now();
+		this->m_lastMoveTimePoint = std::chrono::steady_clock::now();
 	}
 }
 
@@ -39,10 +40,10 @@ void Minion::update(SysClock elapsed, std::vector<std::shared_ptr<Entity>>& enti
 	{
 		Entity::update(elapsed, entitiesInRange);
 
-		if (this->m_lastMoveTimePoint + this->movementSpeed < std::chrono::system_clock::now())
+		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - this->m_lastMoveTimePoint) > this->movementSpeed)
 		{
 			this->doNextMove();
-			this->m_lastMoveTimePoint += this->movementSpeed;
+			this->m_lastMoveTimePoint = std::chrono::time_point_cast<SysClock>(std::chrono::steady_clock::now() + this->movementSpeed);
 		}
 	}
 }

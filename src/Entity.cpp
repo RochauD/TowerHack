@@ -18,7 +18,7 @@ Entity::Entity(std::string filename, int maxHp, int damage, int range, std::chro
 
 	this->m_sprite = std::shared_ptr<StaticSprite<StandardTexture>>(new StaticSprite<StandardTexture>);
 	StandardTexture* temp = this->m_sprite->GetTexture();
-	temp->LoadTexture("Entity1.png");
+	temp->LoadTexture(filename);
 	this->m_sprite->SetZIndex(10001);
 	this->m_sprite->SetVisibilityFlag(false);
 	this->m_sprite->Show(true);
@@ -76,4 +76,8 @@ Entity::Position Entity::getPosition() {
 void Entity::setPosition(Position pos) {
 	this->position = pos;
 	this->m_sprite->setPosition(static_cast<float>(this->getPosition().second * this->m_sprite->GetTexture()->GetTextureRect().width + this->m_offset.first), static_cast<float>(this->getPosition().first * this->m_sprite->GetTexture()->GetTextureRect().height + this->m_offset.second));
+}
+
+int Entity::getRange() {
+	return this->attackRange;
 }
