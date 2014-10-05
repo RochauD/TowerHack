@@ -25,6 +25,7 @@ public:
 	bool tileIsBlocked(size_t xPos, size_t yPos);
 	std::vector<Position> getAccessibleAdjacentTiles(Position pos);	
 	void Update();
+	std::vector<std::shared_ptr<Entity>> getEntitiesInRange(std::shared_ptr<Entity> entity);
 
 private:
 	Dijkstra* m_dijkstraAlgorithm;
@@ -40,8 +41,6 @@ private:
 	//std::chrono::system_clock::time_point m_roundStartTimePoint;
 	std::chrono::system_clock::time_point m_lastSpawnTimePoint;
 	std::chrono::system_clock::time_point m_lastUpdateTimePoint;
-
-	std::vector<std::shared_ptr<Entity>> getEntitiesInRange(std::shared_ptr<Entity> entity);
 };
 
 #endif

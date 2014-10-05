@@ -5,7 +5,6 @@
 #include "Renderable.h"
 #include <memory>
 
-using SysClock = std::chrono::duration<std::chrono::system_clock::rep, std::chrono::system_clock::period>;
 
 class Entity {
 
@@ -25,10 +24,6 @@ private:
 	Position position;
 	Position m_offset;
 	bool alive;
-
-	static sf::Clock clock;
-
-
 	
 public:	
 	bool isAlive();
@@ -36,7 +31,7 @@ public:
 	void attack(Entity target);
 	void takeDamage(int damage);
 	void setPosition(Position pos);
-	virtual void update(SysClock elapsed, std::vector<std::shared_ptr<Entity>>& entitiesInRange);
+	virtual void update();
 
 	int getDamage();
 	int getHp();

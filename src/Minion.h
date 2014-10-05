@@ -18,7 +18,7 @@ public:
 	Minion(std::string filename, int maxHp, int damage, int range, std::chrono::milliseconds atkSpeed, Position position, Position offset, bool alive, int level, std::chrono::milliseconds movementSpeed);
 
 	static void setPathAlgorithm(Dijkstra* pathAlgorithm);
-	void update(SysClock elapsed, std::vector<std::shared_ptr<Entity>>& entitiesInRange);
+	void update();
 	void setAlive(bool alive);
 };
 

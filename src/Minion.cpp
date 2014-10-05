@@ -35,15 +35,15 @@ void Minion::setAlive(bool alive) {
 	}
 }
 
-void Minion::update(SysClock elapsed, std::vector<std::shared_ptr<Entity>>& entitiesInRange) {
+void Minion::update() {
 	if (this->isAlive())
 	{
-		Entity::update(elapsed, entitiesInRange);
+		Entity::update();
 
 		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - this->m_lastMoveTimePoint) > this->movementSpeed)
 		{
 			this->doNextMove();
-			this->m_lastMoveTimePoint = std::chrono::time_point_cast<SysClock>(std::chrono::steady_clock::now() + this->movementSpeed);
+			this->m_lastMoveTimePoint = std::chrono::time_point_cast<std::chrono::duration<std::chrono::system_clock::rep, std::chrono::system_clock::period>>(std::chrono::steady_clock::now() + this->movementSpeed);
 		}
 	}
 }

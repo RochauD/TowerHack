@@ -33,6 +33,7 @@
     <ClInclude Include="..\src\StandardTexture.h" />
     <ClInclude Include="..\src\StaticSprite.h" />
     <ClInclude Include="..\src\TextureManager.h" />
+    <ClInclude Include="..\src\Tower.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\BaseTexture.cpp" />

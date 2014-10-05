@@ -57,7 +57,7 @@ void Entity::takeDamage(int damage) {
 	}
 }
 
-void Entity::update(SysClock elapsed, std::vector<std::shared_ptr<Entity>>& entitiesInRange) {
+void Entity::update() {
 	// TODO!
 }
 

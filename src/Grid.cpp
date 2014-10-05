@@ -145,7 +145,7 @@ void Grid::Update()
 
 	auto elapsed2 = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - this->m_lastSpawnTimePoint);
 
-	if (elapsed2 > std::chrono::milliseconds(500) && this->m_entities.size() < 25)
+	if (elapsed2 > std::chrono::milliseconds(500) && this->m_entities.size() < 5)
 	{
 		this->m_lastSpawnTimePoint = std::chrono::system_clock::now();
 
@@ -154,13 +154,12 @@ void Grid::Update()
 		if (x)
 		{
 			x = !x;
-			temp = std::shared_ptr<Minion>(new Minion(std::string("Entity1.png"), 100, 10, 2, std::chrono::seconds(2), Position(0, 0), Position(this->m_offsetX, this->m_offsetY), true, 1, std::chrono::milliseconds(90)));
+			temp = std::shared_ptr<Minion>(new Minion(std::string("Entity1.png"), 100, 10, 5, std::chrono::seconds(2), Position(0, 0), Position(this->m_offsetX, this->m_offsetY), true, 1, std::chrono::milliseconds(90)));
 		}
 		else {
 			x = !x;
-			temp = std::shared_ptr<Minion>(new Minion(std::string("Entity2.png"), 150, 7, 2, std::chrono::seconds(1), Position(0, 0), Position(this->m_offsetX, this->m_offsetY), true, 1, std::chrono::milliseconds(200)));
+			temp = std::shared_ptr<Minion>(new Minion(std::string("Entity2.png"), 150, 7, 5, std::chrono::seconds(1), Position(0, 0), Position(this->m_offsetX, this->m_offsetY), true, 1, std::chrono::milliseconds(200)));
 		}
-		
 
 		this->m_entities.push_back(temp);
 	}
@@ -168,7 +167,7 @@ void Grid::Update()
 	for (auto iter = this->m_entities.begin(); iter != this->m_entities.end(); ++iter)
 	{
 		if ((*iter)->isAlive() && (*iter)->getPosition() != Position(this->m_height - 1, this->m_width - 1)) {
-			(*iter)->update(elapsed, this->getEntitiesInRange(*iter));
+			(*iter)->update();
 		}
 		else {
 			toRemove.push_back(iter);
